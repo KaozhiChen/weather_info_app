@@ -47,7 +47,7 @@ class _WeatherPageState extends State<WeatherPage> {
         title: const Text('Weather Info'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(12.0),
         child: Column(
           children: [
             TextField(
