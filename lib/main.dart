@@ -34,8 +34,7 @@ class _WeatherPageState extends State<WeatherPage> {
   void _fetchWeather() {
     setState(() {
       cityName = _cityController.text;
-      temperature =
-          '${15 + Random().nextInt(16)}°C'; // Random temp between 15°C and 30°C
+      temperature = '${15 + Random().nextInt(16)}°C';
       List<String> conditions = ['Sunny', 'Cloudy', 'Rainy'];
       weatherCondition = conditions[Random().nextInt(conditions.length)];
     });
@@ -60,13 +59,13 @@ class _WeatherPageState extends State<WeatherPage> {
             ),
             const SizedBox(height: 12),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: _fetchWeather,
               child: const Text('Fetch Weather'),
             ),
             const SizedBox(height: 12),
-            const Text('City: '),
-            const Text('Temperature: '),
-            const Text('Condition: '),
+            Text('City: $cityName'),
+            Text('Temperature: $temperature'),
+            Text('Condition: $weatherCondition'),
           ],
         ),
       ),
