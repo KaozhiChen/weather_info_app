@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   runApp(const WeatherInfoApp());
@@ -11,20 +12,34 @@ class WeatherInfoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Weather Info App',
-      home: WeatherHomePage(),
+      home: WeatherPage(),
     );
   }
 }
 
-class WeatherHomePage extends StatefulWidget {
-  const WeatherHomePage({super.key});
+class WeatherPage extends StatefulWidget {
+  const WeatherPage({super.key});
 
   @override
-  _WeatherHomePageState createState() => _WeatherHomePageState();
+  _WeatherPageState createState() => _WeatherPageState();
 }
 
-class _WeatherHomePageState extends State<WeatherHomePage> {
+class _WeatherPageState extends State<WeatherPage> {
   final TextEditingController _cityController = TextEditingController();
+
+  String cityName = '';
+  String temperature = '';
+  String weatherCondition = '';
+
+  void _fetchWeather() {
+    setState(() {
+      cityName = _cityController.text;
+      temperature =
+          '${15 + Random().nextInt(16)}°C'; // Random temp between 15°C and 30°C
+      List<String> conditions = ['Sunny', 'Cloudy', 'Rainy'];
+      weatherCondition = conditions[Random().nextInt(conditions.length)];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
